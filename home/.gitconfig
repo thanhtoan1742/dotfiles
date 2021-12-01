@@ -1,1 +1,7 @@
-/home/toan/.gitconfig
+[user]
+	name = thanhtoan1742
+	email = thanhtoan1742@gmail.com
+[core]
+	editor = nvim
+[init]
+	defaultBranch = main
