@@ -74,7 +74,7 @@ cmp.setup {
         {name = 'path', max_item_count = 5},
     },
     mapping = {
-        ['<c-k>'] = cmp.mapping(
+        ['<c-j>'] = cmp.mapping(
             function(fallback)
                 if cmp.visible() then
                     cmp.select_next_item()
@@ -86,7 +86,7 @@ cmp.setup {
             end,
             { "i", "s" }
         ),
-        ['<c-j>'] = cmp.mapping(
+        ['<c-k>'] = cmp.mapping(
             function(fallback)
                 if cmp.visible() then
                     cmp.select_prev_item()
