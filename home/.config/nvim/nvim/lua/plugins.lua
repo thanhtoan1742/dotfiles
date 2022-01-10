@@ -2,7 +2,15 @@ return require('packer').startup { function(use)
     use 'wbthomason/packer.nvim'
 
     -- UI
-    use 'stevearc/dressing.nvim'
+    -- use 'stevearc/dressing.nvim'
+
+    -- tree/file explorer
+    use {
+        'kyazdani42/nvim-tree.lua',
+        requires = {
+            'kyazdani42/nvim-web-devicons', -- optional, for file icon
+        },
+    }
 
     -- new motion
     use 'tpope/vim-surround'
@@ -13,7 +21,9 @@ return require('packer').startup { function(use)
     -- auto end
     use 'tpope/vim-endwise'
     -- use 'rstacruz/vim-closer'
-    use 'jiangmiao/auto-pairs'
+    -- use 'jiangmiao/auto-pairs'
+    use 'windwp/nvim-autopairs'
+
 
     -- float terminal
     use "akinsho/toggleterm.nvim"

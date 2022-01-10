@@ -9,6 +9,7 @@ require('telescope').setup {
                 ["<c-j>"] = "move_selection_next",
                 ["<c-k>"] = "move_selection_previous",
                 ["<c-l>"] = "select_vertical",
+                ["<cr>"] = "select_default",
                 ["<c-h>"] = "close",
                 ["<c-p>"] = "close",
                 ["<c-c>"] = "complete_tag",
@@ -19,10 +20,11 @@ require('telescope').setup {
     }
 }
 
-map('n', '<c-p>', '<cmd>Telescope find_files<cr>', {noremap = false})
-map('n', '<c-p>p', '<cmd>Telescope find_files<cr>', {noremap = false})
+map('n', '<c-p>', '<cmd>Telescope commands<cr>', {noremap = false})
+map('n', '<c-p>p', '<cmd>Telescope commands<cr>', {noremap = false})
+map('n', '<c-p>f', '<cmd>Telescope find_files<cr>', {noremap = false})
 map('n', '<c-p>g', '<cmd>Telescope grep_string<cr>', {noremap = false})
 map('n', '<c-p>s', '<cmd>Telescope git_status<cr>', {noremap = false})
 map('n', '<c-p>b', '<cmd>Telescope buffers<cr>', {noremap = false})
 map('n', '<c-p>r', '<cmd>Telescope registers<cr>', {noremap = false})
-map('n', '<c-p>l', '<cmd>Telescope lsp_document_diagnostics<cr>', {noremap = false})
+map('n', '<c-p>l', '<cmd>Telescope diagnostics<cr>', {noremap = false})

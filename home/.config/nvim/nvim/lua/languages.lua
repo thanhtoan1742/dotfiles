@@ -7,7 +7,7 @@ require 'plugins'
 
 -- treesitter for syntax highlight and some commands
 require'nvim-treesitter.configs'.setup {
-    ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+    ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
     sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
     highlight = {
         enable = true,              -- false will disable the whole extension
@@ -105,9 +105,26 @@ cmp.setup {
         expand = function(args) snip.lsp_expand(args.body) end,
     }
 }
+map('i', '<c-l>', [[<cmd>lua require('cmp').complete()<cr>]], {noremap = true})
+
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 require('lspconfig').pyright.setup { capabilities = capabilities, }
 require('lspconfig').clangd.setup { capabilities = capabilities, }
 
+
+function lsp_rename()
+    vim.ui.input(
+        {prompt = 'New name: '},
+        function(new_name)
+            if not new_name or #new_name < 1 then
+                return
+            end
+
+            vim.lsp.buf.rename(new_name)
+        end
+    )
+end
+map('n', '<f2>', '<cmd>lua lsp_rename()<cr>', {noremap = true})
+map('n', 'gh', '<cmd>lua vim.lsp.buf.hover()<cr>', {noremap = true})
