@@ -7,7 +7,97 @@ require 'plugins'
 
 -- treesitter for syntax highlight and some commands
 require'nvim-treesitter.configs'.setup {
-    ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+    ensure_installed = {
+        "kotlin",
+        "prisma",
+        "julia",
+        "regex",
+        "css",
+        "scss",
+        "erlang",
+        "norg",
+        "elixir",
+        "cpp",
+        "gleam",
+        "surface",
+        "bash",
+        "eex",
+        "html",
+        "heex",
+        "tsx",
+        "ocaml",
+        "hcl",
+        "vala",
+        "yaml",
+        "yang",
+        "latex",
+        "ocamllex",
+        "nix",
+        "dart",
+        "c_sharp",
+        "rst",
+        "fennel",
+        "typescript",
+        "lalrpop",
+        "ql",
+        "scala",
+        "rasi",
+        "supercollider",
+        "turtle",
+        "http",
+        "lua",
+        "ocaml_interface",
+        "jsdoc",
+        "clojure",
+        "json",
+        "pioasm",
+        "commonlisp",
+        "json5",
+        "gdscript",
+        "vim",
+        "cmake",
+        "make",
+        "cuda",
+        "godot_resource",
+        "glimmer",
+        "zig",
+        "bibtex",
+        "glsl",
+        "beancount",
+        "dockerfile",
+        "perl",
+        "devicetree",
+        "dot",
+        "svelte",
+        "rust",
+        "comment",
+        "fusion",
+        "sparql",
+        "query",
+        "ledger",
+        "pascal",
+        "teal",
+        "ninja",
+        "go",
+        "tlaplus",
+        "gomod",
+        "c",
+        "gowork",
+        "toml",
+        "graphql",
+        "python",
+        "ruby",
+        "pug",
+        "javascript",
+        "vue",
+        "fish",
+        "hjson",
+        "jsonc",
+        "php",
+        "hocon",
+        "java",
+    }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+    ignore_install = {"r"},
     sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
     highlight = {
         enable = true,              -- false will disable the whole extension
@@ -105,26 +195,11 @@ cmp.setup {
         expand = function(args) snip.lsp_expand(args.body) end,
     }
 }
-map('i', '<c-l>', [[<cmd>lua require('cmp').complete()<cr>]], {noremap = true})
 
+map('n', 'gh', "<cmd>lua vim.diagnostic.open_float()<cr>", {noremap = true})
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
-require('lspconfig').pyright.setup { capabilities = capabilities, }
 require('lspconfig').clangd.setup { capabilities = capabilities, }
-
-
-function lsp_rename()
-    vim.ui.input(
-        {prompt = 'New name: '},
-        function(new_name)
-            if not new_name or #new_name < 1 then
-                return
-            end
-
-            vim.lsp.buf.rename(new_name)
-        end
-    )
-end
-map('n', '<f2>', '<cmd>lua lsp_rename()<cr>', {noremap = true})
-map('n', 'gh', '<cmd>lua vim.lsp.buf.hover()<cr>', {noremap = true})
+require('lspconfig').pyright.setup { capabilities = capabilities, }
+require('lspconfig').gopls.setup { capabilities = capabilities, }

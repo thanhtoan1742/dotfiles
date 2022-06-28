@@ -1,3 +1,6 @@
+-- Set up sane defaults and my personal defaults, no plugin required.
+
+
 local opt = vim.opt
 local cmd = vim.cmd
 local map = vim.api.nvim_set_keymap
@@ -63,7 +66,13 @@ opt.hlsearch = false
 -- highlight on yank
 cmd [[au TextYankPost * silent! lua vim.highlight.on_yank()]]
 
+cmd [[let mapleader=' ']]
+cmd [[set laststatus=3]]
 
 -- Y = yank end line
 map('n', 'Y', 'y$', {noremap = true})
 map('n', '<c-s>', ':w<cr>', {noremap = true})
+map('n', '<leader>ya', 'gg"+yG', {noremap = true})
+
+-- global statusline
+

@@ -2,15 +2,7 @@ return require('packer').startup { function(use)
     use 'wbthomason/packer.nvim'
 
     -- UI
-    -- use 'stevearc/dressing.nvim'
-
-    -- tree/file explorer
-    use {
-        'kyazdani42/nvim-tree.lua',
-        requires = {
-            'kyazdani42/nvim-web-devicons', -- optional, for file icon
-        },
-    }
+    use 'stevearc/dressing.nvim'
 
     -- new motion
     use 'tpope/vim-surround'
@@ -20,16 +12,29 @@ return require('packer').startup { function(use)
 
     -- auto end
     use 'tpope/vim-endwise'
-    -- use 'rstacruz/vim-closer'
-    -- use 'jiangmiao/auto-pairs'
-    use 'windwp/nvim-autopairs'
-
+    use 'jiangmiao/auto-pairs'
 
     -- float terminal
     use "akinsho/toggleterm.nvim"
 
+    -- tabs
+    use 'crispgm/nvim-tabline'
+
     -- preview for subsitute command
     use 'markonm/traces.vim'
+
+
+    -- show helper on key
+    use 'folke/which-key.nvim'
+
+    -- file tree - file browser
+    use {
+        'kyazdani42/nvim-tree.lua',
+        requires = {
+            'kyazdani42/nvim-web-devicons', -- optional, for file icons
+        },
+        tag = 'nightly' -- optional, updated every week. (see issue #1193)
+    }
 
     -- telescope: preview file and fuzzy search
     use {
@@ -62,4 +67,10 @@ return require('packer').startup { function(use)
     use 'ayu-theme/ayu-vim'
     use 'mangeshrex/uwu.vim'
     use 'bluz71/vim-moonfly-colors'
+
+    -- ftdedect
+    use 'nathom/filetype.nvim'
+
+    -- SILE syntax highlight
+    use 'sile-typesetter/vim-sile'
 end }
