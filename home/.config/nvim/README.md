@@ -8,7 +8,9 @@ In this list, Higher priority goals come first.
 - [ ] Install the config
     - [x] Remote backup
         - Inside [Github](https://github.com/thanhtoan1742/dotfiles/tree/main/home/.config/nvim)
-    - [ ] Quick deployment
+    - [ ] Boostrap initialization
+        - Prefrably, I want to run few commands to set up neovim from scratch.
+        - Coded auto add packer, not tested yet
     - [ ] Documentation
 - [ ] LSP intergration
     - [ ] Work well with C++, Rust, Python and Go
