@@ -1,8 +1,6 @@
-local opt = vim.opt
-local cmd = vim.cmd
 local map = vim.api.nvim_set_keymap
 
-require 'plugins'
+require('plugin')
 
 -- comment
 require('Comment').setup()
@@ -18,16 +16,16 @@ require('filetype').setup {
 
 
 -- float terminal
-opt.hidden = true
+vim.opt.hidden = true
 require('toggleterm').setup {
     direction = 'float',
 }
-map('n', '<c-t>', ':ToggleTerm <cr>', {})
-map('t', '<c-t>', [[<c-\><c-n>:ToggleTerm<cr>]], {})
+vim.keymap.set('n', '<c-t>', [[<cmd>ToggleTerm <cr>]], {noremap=true})
+vim.keymap.set('t', '<c-t>', [[<c-\><c-n><cmd>ToggleTerm<cr>]], {noremap=true})
 
 
 -- which key
-require('which-key').setup {}
+require('which-key').setup()
 
 
 -- file browser
@@ -38,4 +36,4 @@ require("nvim-tree").setup()
 -- require('tabline').setup()
 
 -- lsp
-map('n', '<leader>r', ':lua vim.lsp.buf.rename()<cr>', {noremap=true})
+vim.keymap.set('n', '<leader>r', '<cmd>lua vim.lsp.buf.rename()<cr>', {noremap=true})

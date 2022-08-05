@@ -2,102 +2,13 @@ local opt = vim.opt
 local cmd = vim.cmd
 local map = vim.api.nvim_set_keymap
 
-require 'plugins'
+require('plugin')
 
 
 -- treesitter for syntax highlight and some commands
-require'nvim-treesitter.configs'.setup {
-    ensure_installed = {
-        "kotlin",
-        "prisma",
-        "julia",
-        "regex",
-        "css",
-        "scss",
-        "erlang",
-        "norg",
-        "elixir",
-        "cpp",
-        "gleam",
-        "surface",
-        "bash",
-        "eex",
-        "html",
-        "heex",
-        "tsx",
-        "ocaml",
-        "hcl",
-        "vala",
-        "yaml",
-        "yang",
-        "latex",
-        "ocamllex",
-        "nix",
-        "dart",
-        "c_sharp",
-        "rst",
-        "fennel",
-        "typescript",
-        "lalrpop",
-        "ql",
-        "scala",
-        "rasi",
-        "supercollider",
-        "turtle",
-        "http",
-        "lua",
-        "ocaml_interface",
-        "jsdoc",
-        "clojure",
-        "json",
-        "pioasm",
-        "commonlisp",
-        "json5",
-        "gdscript",
-        "vim",
-        "cmake",
-        "make",
-        "cuda",
-        "godot_resource",
-        "glimmer",
-        "zig",
-        "bibtex",
-        "glsl",
-        "beancount",
-        "dockerfile",
-        "perl",
-        "devicetree",
-        "dot",
-        "svelte",
-        "rust",
-        "comment",
-        "fusion",
-        "sparql",
-        "query",
-        "ledger",
-        "pascal",
-        "teal",
-        "ninja",
-        "go",
-        "tlaplus",
-        "gomod",
-        "c",
-        "gowork",
-        "toml",
-        "graphql",
-        "python",
-        "ruby",
-        "pug",
-        "javascript",
-        "vue",
-        "fish",
-        "hjson",
-        "jsonc",
-        "php",
-        "hocon",
-        "java",
-    }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-    ignore_install = {"r"},
+require('nvim-treesitter.configs').setup {
+    ensure_installed = {'c', 'cpp', 'go', 'python', 'lua',}, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+    ignore_install = {'r'},
     sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
     highlight = {
         enable = true,              -- false will disable the whole extension
@@ -119,14 +30,14 @@ require'nvim-treesitter.configs'.setup {
         highlight_current_scope = { enable = false },
         smart_rename = {
             enable = true,
-            keymaps = { smart_rename = "grr", },
+            keymaps = { smart_rename = 'grr', },
         },
         navigation = {
             enable = true,
             keymaps = {
-                goto_definition = "gnd",
-                list_definitions = "gnD",
-                list_definitions_toc = "gO",
+                goto_definition = 'gnd',
+                list_definitions = 'gnD',
+                list_definitions_toc = 'gO',
                 -- goto_next_usage = "<a-*>",
                 -- goto_previous_usage = "<a-#>",
             },
@@ -137,12 +48,12 @@ require'nvim-treesitter.configs'.setup {
             enable = true,
             lookahead = true,
             keymaps = {
-                ["ib"] = "@block.inner",
-                ["ab"] = "@block.inner",
-                ["ic"] = "@class.inner",
-                ["ac"] = "@class.inner",
-                ["if"] = "@function.inner",
-                ["af"] = "@function.inner",
+                ['ib'] = '@block.inner',
+                ['ab'] = '@block.inner',
+                ['ic'] = '@class.inner',
+                ['ac'] = '@class.inner',
+                ['if'] = '@function.inner',
+                ['af'] = '@function.inner',
             },
         },
     },
@@ -155,8 +66,8 @@ local has_words_before = function()
     return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
-local cmp = require 'cmp'
-local snip = require 'luasnip'
+local cmp = require('cmp')
+local snip = require('luasnip')
 cmp.setup {
     sources = {
         {name = 'nvim_lsp', max_item_count = 10},
@@ -174,7 +85,7 @@ cmp.setup {
                     fallback();
                 end
             end,
-            { "i", "s" }
+            { 'i', 's' }
         ),
         ['<c-k>'] = cmp.mapping(
             function(fallback)
@@ -186,7 +97,7 @@ cmp.setup {
                     fallback();
                 end
             end,
-            { "i", "s" }
+            { 'i', 's' }
         ),
         ['<c-l>'] = cmp.mapping.confirm({select = true}),
         ['<c-h>'] = cmp.mapping.abort(),
@@ -196,10 +107,10 @@ cmp.setup {
     }
 }
 
-map('n', 'gh', "<cmd>lua vim.diagnostic.open_float()<cr>", {noremap = true})
+map('n', 'gh', [[<cmd>lua vim.diagnostic.open_float()<cr>]], {noremap = true})
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
-require('lspconfig').clangd.setup { capabilities = capabilities, }
-require('lspconfig').pyright.setup { capabilities = capabilities, }
-require('lspconfig').gopls.setup { capabilities = capabilities, }
+require('lspconfig')['clangd'].setup { capabilities = capabilities, }
+require('lspconfig')['pyright'].setup { capabilities = capabilities, }
+require('lspconfig')['gopls'].setup { capabilities = capabilities, }

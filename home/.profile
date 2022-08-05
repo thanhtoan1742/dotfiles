@@ -25,3 +25,8 @@ conda_init () {
 export PATH=$PATH:$HOME/go/bin
 # <<< conda initialize <<<
 
+
+
+# Added by Toolbox App
+export PATH="$PATH:/home/toan/.local/share/JetBrains/Toolbox/scripts"
+. "$HOME/.cargo/env"

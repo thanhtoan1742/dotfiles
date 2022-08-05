@@ -1,6 +1,0 @@
-require 'defaults'
-require 'plugins'
-require 'colorschemes'
-require 'configs'
-require 'telescope_configs'
-require 'languages'
