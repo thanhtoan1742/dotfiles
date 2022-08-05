@@ -6,7 +6,8 @@ This is my attempt at bulding a decent config file for Neovim.
 In this list, Higher priority goals come first.
 
 - [ ] Install the config
-    - [ ] Remote backup
+    - [x] Remote backup
+        - Inside [Github](https://github.com/thanhtoan1742/dotfiles/tree/main/home/.config/nvim)
     - [ ] Quick deployment
     - [ ] Documentation
 - [ ] LSP
@@ -23,4 +24,3 @@ In this list, Higher priority goals come first.
 - [ ] Files/text finder
 - [ ] Terminal simulator
 - [ ] Spell check
-
