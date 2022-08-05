@@ -10,10 +10,14 @@ In this list, Higher priority goals come first.
         - Inside [Github](https://github.com/thanhtoan1742/dotfiles/tree/main/home/.config/nvim)
     - [ ] Quick deployment
     - [ ] Documentation
-- [ ] LSP
+- [ ] LSP intergration
     - [ ] Work well with C++, Rust, Python and Go
+        - [ ] C++ (clangd)
+        - [ ] Rust
+        - [ ] Python (pyright)
+        - [ ] Go (gopls)
     - [ ] Stable
-    - [ ] Good keymap that follow "keymap philosophy"
+    - [ ] Good keymaps that follow "keymap philosophy"
     - [ ] Fast
 - [ ] File browser
     - Show all files
