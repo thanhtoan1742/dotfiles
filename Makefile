@@ -1,9 +1,9 @@
 build:
 	sh copy_config.sh
-	docker build . -t dotfile:0.0.8 -t dotfile:latest
+	docker build . -t dotfile:0.1.0 -t dotfile:latest
 
 run:
-	docker rm dotfile
+	docker rm -f dotfile
 	docker run -p 8080:8000 --name dotfile dotfile
 
 ssh:
