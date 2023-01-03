@@ -2,9 +2,6 @@ local opt = vim.opt
 local cmd = vim.cmd
 local map = vim.api.nvim_set_keymap
 
-require('plugin')
-
-
 -- treesitter for syntax highlight and some commands
 require('nvim-treesitter.configs').setup {
     ensure_installed = {'c', 'cpp', 'go', 'python', 'lua',}, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
@@ -59,8 +56,4 @@ require('nvim-treesitter.configs').setup {
     },
 }
 
--- mason and lsp
-require("mason").setup()
-require("mason-lspconfig").setup()
 
-require("lspconfig").sumneko_lua.setup {}

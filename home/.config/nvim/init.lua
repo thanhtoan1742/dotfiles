@@ -4,12 +4,16 @@ end
 
 local load = function()
     require 'default'
-    require 'plugin'
-    require 'function'
     require 'colorscheme'
-    require 'language'
-    require 'plugin_config'
-    require 'telescope_config'
+    require 'install_plugin'
+
+    require 'plugin.lsp'
+    require 'plugin.telescope'
+    require 'plugin.treesitter'
+    require 'plugin.comment'
+    require 'plugin.toggleterm'
+    require 'plugin.which-key'
+    require 'plugin.filetype'
 end
 
 
