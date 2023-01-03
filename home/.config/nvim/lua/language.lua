@@ -59,57 +59,8 @@ require('nvim-treesitter.configs').setup {
     },
 }
 
+-- mason and lsp
+require("mason").setup()
+require("mason-lspconfig").setup()
 
--- completion
-local has_words_before = function()
-    local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-    return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-end
-
-local cmp = require('cmp')
-local snip = require('luasnip')
-cmp.setup {
-    sources = {
-        {name = 'nvim_lsp', max_item_count = 10},
-        {name = 'buffer', max_item_count = 5},
-        {name = 'path', max_item_count = 5},
-    },
-    mapping = {
-        ['<c-j>'] = cmp.mapping(
-            function(fallback)
-                if cmp.visible() then
-                    cmp.select_next_item()
-                elseif snip.jumpable(1) then
-                    snip.jump(1)
-                else
-                    fallback();
-                end
-            end,
-            { 'i', 's' }
-        ),
-        ['<c-k>'] = cmp.mapping(
-            function(fallback)
-                if cmp.visible() then
-                    cmp.select_prev_item()
-                elseif snip.jumpable(-1) then
-                    snip.jump(-1)
-                else
-                    fallback();
-                end
-            end,
-            { 'i', 's' }
-        ),
-        ['<c-l>'] = cmp.mapping.confirm({select = true}),
-        ['<c-h>'] = cmp.mapping.abort(),
-    },
-    snippet = {
-        expand = function(args) snip.lsp_expand(args.body) end,
-    }
-}
-
-map('n', 'gh', [[<cmd>lua vim.diagnostic.open_float()<cr>]], {noremap = true})
-
-capabilities = require('cmp_nvim_lsp').default_capabilities()
-require('lspconfig')['clangd'].setup { capabilities = capabilities, }
-require('lspconfig')['pyright'].setup { capabilities = capabilities, }
-require('lspconfig')['gopls'].setup { capabilities = capabilities, }
+require("lspconfig").sumneko_lua.setup {}

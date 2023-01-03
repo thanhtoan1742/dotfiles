@@ -27,13 +27,5 @@ vim.keymap.set('t', '<c-t>', [[<c-\><c-n><cmd>ToggleTerm<cr>]], {noremap=true})
 -- which key
 require('which-key').setup()
 
-
--- file browser
-require("nvim-tree").setup()
-
-
--- tabs
--- require('tabline').setup()
-
 -- lsp
 vim.keymap.set('n', '<leader>r', '<cmd>lua vim.lsp.buf.rename()<cr>', {noremap=true})

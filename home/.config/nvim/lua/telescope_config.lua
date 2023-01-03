@@ -1,7 +1,15 @@
-require('plugin')
+local telescope = require 'telescope'
+local builtin = require 'telescope.builtin'
 
-require('telescope').setup {
+telescope.load_extension 'file_browser'
+telescope.load_extension 'ui-select'
+
+telescope.setup {
     defaults = {
+        layout_config =  {
+            prompt_position = "top",
+        },
+        sorting_strategy = "ascending",
         mappings = {
             i = {
                 ['<c-j>'] = 'move_selection_next',
@@ -13,14 +21,22 @@ require('telescope').setup {
                 ['<c-n>'] = 'preview_scrolling_down',
                 ['<c-m>'] = 'preview_scrolling_up',
             }
+        },
+    },
+    extensions = {
+        file_browser = {
+            hijack_netrw = true,
         }
-    }
+    },
 }
 
-vim.keymap.set('n', '<c-p>', '<cmd>Telescope find_files<cr>', {noremap = false})
-vim.keymap.set('n', '<c-p>p', '<cmd>Telescope find_files<cr>', {noremap = false})
-vim.keymap.set('n', '<c-p>g', '<cmd>Telescope grep_string<cr>', {noremap = false})
-vim.keymap.set('n', '<c-p>s', '<cmd>Telescope git_status<cr>', {noremap = false})
-vim.keymap.set('n', '<c-p>b', '<cmd>Telescope buffers<cr>', {noremap = false})
-vim.keymap.set('n', '<c-p>r', '<cmd>Telescope registers<cr>', {noremap = false})
-vim.keymap.set('n', '<c-p>c', '<cmd>Telescope commands<cr>', {noremap = false})
+
+
+vim.keymap.set('n', '<c-p>', builtin.find_files, {noremap = false})
+vim.keymap.set('n', '<c-p>p', builtin.find_files, {noremap = false})
+vim.keymap.set('n', '<c-p>f', telescope.extensions.file_browser.file_browser, {noremap = false})
+vim.keymap.set('n', '<c-p>g', builtin.grep_string, {noremap = false})
+vim.keymap.set('n', '<c-p>s', builtin.git_status, {noremap = false})
+vim.keymap.set('n', '<c-p>b', builtin.buffers, {noremap = false})
+vim.keymap.set('n', '<c-p>r', builtin.registers, {noremap = false})
+vim.keymap.set('n', '<c-p>c', builtin.commands, {noremap = false})
