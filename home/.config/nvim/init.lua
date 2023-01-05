@@ -1,22 +1,16 @@
 local load_vscode = function()
-    require 'default'
+    require("default")
 end
 
 local load = function()
-    require 'default'
-    require 'colorscheme'
-    require 'install_plugin'
+    require("default")
+    require("bootstrap")
 
-    require 'plugin.lsp'
-    require 'plugin.telescope'
-    require 'plugin.treesitter'
-    require 'plugin.dressing'
-    -- require 'plugin.noice'
-    -- require 'plugin.nvim-notify'
-    require 'plugin.comment'
-    require 'plugin.toggleterm'
-    require 'plugin.which-key'
-    require 'plugin.filetype'
+    require("lazy").setup("plugins", {
+        change_detection = {
+            enabled = false,
+        }
+    })
 end
 
 

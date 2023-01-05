@@ -1,6 +1,6 @@
 build:
 	sh copy_config.sh
-	docker build . -t dotfile:0.1.0 -t dotfile:latest
+	docker build . -t dotfile:0.1.1 -t dotfile:latest
 
 run:
 	docker rm -f dotfile
