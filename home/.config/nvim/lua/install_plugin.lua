@@ -13,6 +13,28 @@ local packer_installed = ensure_packer()
 
 local install_plugins = function(use)
     use 'wbthomason/packer.nvim'
+    -- ui
+    use 'MunifTanjim/nui.nvim'
+    use 'rcarriga/nvim-notify'
+    use 'stevearc/dressing.nvim'
+    use 'folke/noice.nvim'
+    -- treesitter for syntax highlight and some commands
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        run = ':TSUpdate',
+    }
+    -- telescope: preview file, fuzzy search, file browser
+    use 'nvim-lua/plenary.nvim'
+    use 'nvim-telescope/telescope.nvim'
+    use 'nvim-telescope/telescope-file-browser.nvim'
+    use 'nvim-telescope/telescope-ui-select.nvim'
+    -- lsp
+    use {
+        'williamboman/mason.nvim',
+        'williamboman/mason-lspconfig.nvim',
+        'neovim/nvim-lspconfig',
+        'folke/neodev.nvim',
+    }
     -- new motion
     use 'tpope/vim-surround'
     -- comment
@@ -26,22 +48,6 @@ local install_plugins = function(use)
     use 'markonm/traces.vim'
     -- show helper on key
     use 'folke/which-key.nvim'
-    -- telescope: preview file, fuzzy search, file browser
-    use 'nvim-lua/plenary.nvim'
-    use 'nvim-telescope/telescope.nvim'
-    use 'nvim-telescope/telescope-file-browser.nvim'
-    use 'nvim-telescope/telescope-ui-select.nvim'
-    -- treesitter for syntax highlight and some commands
-    use {
-        'nvim-treesitter/nvim-treesitter',
-        run = ':TSUpdate',
-    }
-    -- completion
-    use {
-        'williamboman/mason.nvim',
-        'williamboman/mason-lspconfig.nvim',
-        'neovim/nvim-lspconfig',
-    }
     -- colorschemes
     use 'ayu-theme/ayu-vim'
     -- ftdedect
