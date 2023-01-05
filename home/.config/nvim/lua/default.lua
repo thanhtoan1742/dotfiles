@@ -60,6 +60,9 @@ vim.opt.autoread = true
 vim.opt.incsearch = true
 vim.opt.hlsearch = false
 
+-- terminal color
+vim.opt.termguicolors = true
+
 -- highlight on yank
 vim.api.nvim_create_autocmd(
     {'TextYankPost'}, -- event

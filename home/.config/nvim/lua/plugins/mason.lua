@@ -18,18 +18,18 @@ return {
                 "rust_analyzer"
             },
         }
+
+        local capabilities = vim.lsp.protocol.make_client_capabilities()
+        capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
         mlc.setup_handlers {
             function(server_name)
-                require('lspconfig')[server_name].setup {}
+                require('lspconfig')[server_name].setup {
+                    capabilities = capabilities
+                }
             end,
         }
 
         -- require("neodev").setup()
-
-        require("lspconfig").sumneko_lua.setup {}
-        require("lspconfig").clangd.setup {}
-        require("lspconfig").pyright.setup {}
-        require("lspconfig").gopls.setup {}
     end
 
 }

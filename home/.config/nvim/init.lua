@@ -11,6 +11,7 @@ local load = function()
             enabled = false,
         }
     })
+    vim.cmd.colorscheme "sonokai"
 end
 
 
